@@ -52,5 +52,3 @@ enc_dec_btn.pack()
 
 # start the GUI
 app.mainloop()
-
-print(enc_key.get())
