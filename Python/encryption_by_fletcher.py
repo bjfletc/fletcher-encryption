@@ -35,6 +35,14 @@ def encrypt():
     print(command)
     os.system(command)
 
+def decrypt():
+    # openssl enc -aes-256-cbc -in test.txt -out test.txt.enc -pass pass:password
+    file = file_path[:file_path.find(".enc")]
+    command = "openssl enc -aes-256-cbc -in " + '"' + file_path + '" ' + "-out \
+    " + '"' + file + '" -d ' + "-pass pass:" + '"' + enc_key.get() + '"'
+    print(command)
+    os.system(command)
+
 # button to choose file to encrypt/decrypt
 choose_file_btn = Button(left_frame, text="choose file", command=get_file_path)
 choose_file_btn.pack(fill = BOTH)
@@ -46,9 +54,13 @@ enter_key_label.pack(expand = YES)
 encryption_key = Entry(center_frame, textvariable=enc_key, show="*", width=27)
 encryption_key.pack()
 
-# button to encrypt/decrypt the file
+# button to encrypt the file
 enc_dec_btn = Button(right_frame, text="encrypt", command=encrypt)
 enc_dec_btn.pack()
+
+# button to decrypt the file
+dec_btn = Button(right_frame, text="decrypt", command=decrypt)
+dec_btn.pack()
 
 # start the GUI
 app.mainloop()
