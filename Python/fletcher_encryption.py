@@ -6,3 +6,13 @@
 #
 
 from tkinter import *
+
+app = Tk()
+app.title("Fletcher Encryption")
+app.geometry("900x450")
+
+choose_file_btn = Button(app, text="Choose File")
+
+choose_file_btn.grid(row=0, column=0, rowspan=2)
+
+app.mainloop()
