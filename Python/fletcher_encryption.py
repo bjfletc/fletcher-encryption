@@ -24,7 +24,7 @@ choose_file_btn.grid(row=0, column=0, rowspan=2)
 enter_key_lbl = Label(app, text="Enter your encryption key:")
 enter_key_lbl.grid(row=0, column=1)
 
-encryption_key = Entry(app)
+encryption_key = Entry(app, show="*", width=27)
 encryption_key.grid(row=1, column=1)
 
 fun_btn = Button(app, text="Enc/Dec")
