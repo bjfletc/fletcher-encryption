@@ -11,6 +11,8 @@ from tkinter import *
 app = Tk()
 app.title("Fletcher Encryption")
 app.geometry("900x450")
+app.rowconfigure(0, minsize=225)
+app.rowconfigure(1, minsize=225)
 app.columnconfigure(0, minsize=300)
 app.columnconfigure(1, minsize=300)
 app.columnconfigure(2, minsize=300)
