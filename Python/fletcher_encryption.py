@@ -6,9 +6,9 @@
 #
 
 from tkinter import *
-from tkinter import filedialog
 from tkinter import StringVar
 import app_operations
+import app_functions
 
 # May need to add to its own module later
 # Used to set the text of the button that performs the operation
@@ -22,12 +22,7 @@ def op_btn_status():
         print("This didn't happen")
     else:
         operation_btn.configure(text="Encrypt")
-
-
-def choose_file():
-    global file_path
-    file_path= filedialog.askopenfilename(title = "Select A File")
-
+        
 
 # Setup and configure the app window.
 app = Tk()
@@ -41,7 +36,7 @@ app.columnconfigure(2, minsize=300)
 
 # Going to allow the user to choose the file to encrypte/decrypt
 # with the application.
-choose_file_btn = Button(app, text="Choose File", command=choose_file)
+choose_file_btn = Button(app, text="Choose File", command=app_functions.choose_file)
 choose_file_btn.grid(row=1, column=0, rowspan=2, sticky=N)
 
 # Where we show the user to enter their encryption key to be able to
@@ -81,11 +76,11 @@ decrypt.pack()
 def operation_btn_cmd():
     status = stat.get()
     if (status == 1):
-        app_operations.encrypt(file_path, key)
+        app_operations.encrypt(app_functions.file_path, key)
     elif (status == 2):
-        app_operations.decrypt(file_path, key)
+        app_operations.decrypt(app_functions.file_path, key)
     else:
-        app_operations.encrypt(file_path, key)
+        app_operations.encrypt(app_functions.file_path, key)
 
 # Button used to actually encrypt/decrypt a file.
 operation_btn = Button(app, text="Encrypt", command=operation_btn_cmd)
