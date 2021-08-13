@@ -6,6 +6,8 @@
 #
 
 from tkinter import *
+from tkinter import filedialog
+from app_operations import *
 
 # May need to add to its own module later
 # Used to set the text of the button that performs the operation
@@ -21,6 +23,11 @@ def op_btn_status():
         operation_btn.configure(text="Encrypt")
 
 
+def choose_file():
+    global file_path
+    file_path= filedialog.askopenfilename(title = "Select A File")
+
+
 # Setup and configure the app window.
 app = Tk()
 app.title("Fletcher Encryption")
@@ -34,7 +41,7 @@ app.columnconfigure(2, minsize=300)
 # Going to allow the user to choose the file to encrypte/decrypte
 # with the application.
 # TODO: Implement choosing the file command.
-choose_file_btn = Button(app, text="Choose File")
+choose_file_btn = Button(app, text="Choose File", command=choose_file)
 choose_file_btn.grid(row=1, column=0, rowspan=2, sticky=N)
 
 # Where we show the user to enter their encryption key to be able to
