@@ -10,20 +10,6 @@ from tkinter import StringVar
 import app_operations
 import app_functions
 
-# May need to add to its own module later
-# Used to set the text of the button that performs the operation
-def op_btn_status():
-    num = stat.get()
-    if (num == 1):
-        operation_btn.configure(text="Encrypt")
-        print("This should happen")
-    elif (num == 2):
-        operation_btn.configure(text="Decrypt")
-        print("This didn't happen")
-    else:
-        operation_btn.configure(text="Encrypt")
-        
-
 # Setup and configure the app window.
 app = Tk()
 app.title("Fletcher Encryption")
@@ -36,7 +22,8 @@ app.columnconfigure(2, minsize=300)
 
 # Going to allow the user to choose the file to encrypte/decrypt
 # with the application.
-choose_file_btn = Button(app, text="Choose File", command=app_functions.choose_file)
+choose_file_btn = Button(app, text="Choose File", command=app_functions\
+.choose_file)
 choose_file_btn.grid(row=1, column=0, rowspan=2, sticky=N)
 
 # Where we show the user to enter their encryption key to be able to
@@ -64,9 +51,9 @@ radio_btn_frame = Frame(app)
 radio_btn_frame.grid(row=0, column=2)
 
 encrypt = Radiobutton(radio_btn_frame, text="Encrypt", variable=stat, value=1\
-, command=op_btn_status)
+, command=lambda : app_functions.op_btn_status(stat.get(), operation_btn))
 decrypt = Radiobutton(radio_btn_frame, text="Decrypt", variable=stat, value=2\
-, command=op_btn_status)
+, command=lambda : app_functions.op_btn_status(stat.get(), operation_btn))
 
 encrypt.pack()
 decrypt.pack()
