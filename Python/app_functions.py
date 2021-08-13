@@ -7,6 +7,7 @@
 
 from tkinter import filedialog
 from tkinter import *
+import app_operations
 
 def choose_file():
     global file_path
@@ -26,3 +27,16 @@ def op_btn_status(number, button):
         print("This didn't happen")
     else:
         operation_btn.configure(text="Encrypt")
+
+
+# chooses the command to be performed by the button.
+# TODO: refactor this to be combined with the above op_btn_status() function.
+def operation_btn_cmd(stat, k):
+    status = stat
+    key = k
+    if (status == 1):
+        app_operations.encrypt(file_path, key)
+    elif (status == 2):
+        app_operations.decrypt(file_path, key)
+    else:
+        app_operations.encrypt(file_path, key)

@@ -7,7 +7,7 @@
 
 from tkinter import *
 from tkinter import StringVar
-import app_operations
+# import app_operations
 import app_functions
 
 # Setup and configure the app window.
@@ -58,6 +58,7 @@ decrypt = Radiobutton(radio_btn_frame, text="Decrypt", variable=stat, value=2\
 encrypt.pack()
 decrypt.pack()
 
+"""
 # chooses the command to be performed by the button.
 # TODO: refactor this to be combined with the above op_btn_status() function.
 def operation_btn_cmd():
@@ -68,9 +69,11 @@ def operation_btn_cmd():
         app_operations.decrypt(app_functions.file_path, key)
     else:
         app_operations.encrypt(app_functions.file_path, key)
+"""
 
 # Button used to actually encrypt/decrypt a file.
-operation_btn = Button(app, text="Encrypt", command=operation_btn_cmd)
+operation_btn = Button(app, text="Encrypt", command=lambda : app_functions.\
+operation_btn_cmd(stat.get(), key))
 operation_btn.grid(row=1, column=2, sticky=N)
 
 app.mainloop()
