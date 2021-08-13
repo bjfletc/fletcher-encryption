@@ -39,9 +39,8 @@ app.columnconfigure(0, minsize=300)
 app.columnconfigure(1, minsize=300)
 app.columnconfigure(2, minsize=300)
 
-# Going to allow the user to choose the file to encrypte/decrypte
+# Going to allow the user to choose the file to encrypte/decrypt
 # with the application.
-# TODO: Implement choosing the file command.
 choose_file_btn = Button(app, text="Choose File", command=choose_file)
 choose_file_btn.grid(row=1, column=0, rowspan=2, sticky=N)
 
