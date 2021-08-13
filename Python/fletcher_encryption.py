@@ -7,6 +7,7 @@
 
 from tkinter import *
 from tkinter import filedialog
+from tkinter import StringVar
 from app_operations import *
 
 # May need to add to its own module later
@@ -46,14 +47,17 @@ choose_file_btn.grid(row=1, column=0, rowspan=2, sticky=N)
 
 # Where we show the user to enter their encryption key to be able to
 # encrypt/decrypt the file of their choosing.
+key = StringVar()
+key = key.get()
+
 enter_key_lbl = Label(app, text="Enter your encryption key:")
 enter_key_lbl.grid(row=0, column=1, sticky=S)
 
 encryption_key = Entry(app, show="*", width=27)
 encryption_key.grid(row=1, column=1, sticky=N)
 
-status = IntVar()
-status.get()
+stat = IntVar()
+status = stat.get()
 
 """
  This is used to choose the operation the be performed on the file.
@@ -66,14 +70,21 @@ status.get()
 radio_btn_frame = Frame(app)
 radio_btn_frame.grid(row=0, column=2)
 
-encrypt = Radiobutton(radio_btn_frame, text="Encrypt", variable=status, value=1\
+encrypt = Radiobutton(radio_btn_frame, text="Encrypt", variable=stat, value=1\
 , command=op_btn_status)
-decrypt = Radiobutton(radio_btn_frame, text="Decrypt", variable=status, value=2\
+decrypt = Radiobutton(radio_btn_frame, text="Decrypt", variable=stat, value=2\
 , command=op_btn_status)
 
 encrypt.pack()
 decrypt.pack()
 
+def operation_btn_cmd():
+    if (status == "Encrypt"):
+        encrypt(file_path)
+    elif (status == "Decrypt"):
+        decrypt(file_path)
+    else:
+        encrypt(file_path)
 
 # Button used to actually encrypt/decrypt a file.
 operation_btn = Button(app, text="Encrypt")
