@@ -8,12 +8,12 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter import StringVar
-from app_operations import *
+import app_operations
 
 # May need to add to its own module later
 # Used to set the text of the button that performs the operation
 def op_btn_status():
-    num = status.get()
+    num = stat.get()
     if (num == 1):
         operation_btn.configure(text="Encrypt")
         print("This should happen")
@@ -53,11 +53,10 @@ key = key.get()
 enter_key_lbl = Label(app, text="Enter your encryption key:")
 enter_key_lbl.grid(row=0, column=1, sticky=S)
 
-encryption_key = Entry(app, show="*", width=27)
+encryption_key = Entry(app, show="*", textvariable=key, width=27)
 encryption_key.grid(row=1, column=1, sticky=N)
 
 stat = IntVar()
-status = stat.get()
 
 """
  This is used to choose the operation the be performed on the file.
@@ -78,16 +77,19 @@ decrypt = Radiobutton(radio_btn_frame, text="Decrypt", variable=stat, value=2\
 encrypt.pack()
 decrypt.pack()
 
+# chooses the command to be performed by the button.
+# TODO: refactor this to be combined with the above op_btn_status() function.
 def operation_btn_cmd():
-    if (status == "Encrypt"):
-        encrypt(file_path)
-    elif (status == "Decrypt"):
-        decrypt(file_path)
+    status = stat.get()
+    if (status == 1):
+        app_operations.encrypt(file_path, key)
+    elif (status == 2):
+        app_operations.decrypt(file_path, key)
     else:
-        encrypt(file_path)
+        app_operations.encrypt(file_path, key)
 
 # Button used to actually encrypt/decrypt a file.
-operation_btn = Button(app, text="Encrypt")
+operation_btn = Button(app, text="Encrypt", command=operation_btn_cmd)
 operation_btn.grid(row=1, column=2, sticky=N)
 
 app.mainloop()
