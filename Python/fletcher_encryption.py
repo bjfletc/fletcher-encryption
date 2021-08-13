@@ -21,7 +21,7 @@ app.columnconfigure(2, minsize=300)
 # with the application.
 # TODO: Implement choosing the file command.
 choose_file_btn = Button(app, text="Choose File")
-choose_file_btn.grid(row=0, column=0, rowspan=2)
+choose_file_btn.grid(row=1, column=0, rowspan=2, sticky=N)
 
 # Where we show the user to enter their encryption key to be able to
 # encrypt/decrypt the file of their choosing.
@@ -33,8 +33,21 @@ encryption_key.grid(row=1, column=1, sticky=N)
 
 # Button used to actually encrypt/decrypt a file.
 # TODO: Set the button text to change based off of radio button.
+status = IntVar()
+status.get()
+
+radio_btn_frame = Frame(app)
+radio_btn_frame.grid(row=0, column=2)
+
+encrypt = Radiobutton(radio_btn_frame, text="Encrypt", variable=status, value=1)
+decrypt = Radiobutton(radio_btn_frame, text="Decrypt", variable=status, value=2)
+
+encrypt.pack()
+decrypt.pack()
+
+
 fun_btn = Button(app, text="Enc/Dec")
-fun_btn.grid(row=0, column=2, rowspan=2)
+fun_btn.grid(row=1, column=2, sticky=N)
 
 
 app.mainloop()
