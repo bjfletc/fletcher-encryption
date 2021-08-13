@@ -60,9 +60,9 @@ radio_btn_frame = Frame(app)
 radio_btn_frame.grid(row=0, column=2)
 
 encrypt = Radiobutton(radio_btn_frame, text="Encrypt", variable=status, value=1\
-, command=fun_btn_status)
+, command=op_btn_status)
 decrypt = Radiobutton(radio_btn_frame, text="Decrypt", variable=status, value=2\
-, command=fun_btn_status)
+, command=op_btn_status)
 
 encrypt.pack()
 decrypt.pack()
