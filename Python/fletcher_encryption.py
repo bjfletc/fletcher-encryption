@@ -35,6 +35,7 @@ encryption_key.grid(row=1, column=1, sticky=N)
 # TODO: Set the button text to change based off of radio button.
 status = IntVar()
 status.get()
+operation_btn_text = "Encrypt"
 
 radio_btn_frame = Frame(app)
 radio_btn_frame.grid(row=0, column=2)
@@ -46,7 +47,7 @@ encrypt.pack()
 decrypt.pack()
 
 
-fun_btn = Button(app, text="Enc/Dec")
+fun_btn = Button(app, text=operation_btn_text)
 fun_btn.grid(row=1, column=2, sticky=N)
 
 
