@@ -9,7 +9,7 @@ from tkinter import *
 
 # May need to add to its own module later
 # Used to set the text of the button that performs the operation
-def fun_btn_status():
+def op_btn_status():
     num = status.get()
     if (num == 1):
         operation_btn.configure(text="Encrypt")
